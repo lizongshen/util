@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/gob"
 	"fmt"
+	"io"
 	"io/ioutil"
 	"math/rand"
 	"net"
@@ -404,4 +405,37 @@ func RelPath(targpath string) string {
 	basepath, _ := filepath.Abs("./")
 	rel, _ := filepath.Rel(basepath, targpath)
 	return strings.Replace(rel, `\`, `/`, -1)
+}
+
+func RenderNode(n *html.Node) string {
+	var buf bytes.Buffer
+	w := io.Writer(&buf)
+	html.Render(w, n)
+	return buf.String()
+}
+
+func SplitHtml(h string) []string {
+	doc, _ := html.Parse(strings.NewReader(h))
+	body := doc.FirstChild.FirstChild.NextSibling
+	childs := make([]string, 0)
+	buf := bytes.Buffer{}
+	clen := 0
+	for c := body.FirstChild; c != nil; c = c.NextSibling {
+		cstr := RenderNode(c)
+		clen += len(cstr)
+		if clen > 4000 {
+			childs = append(childs, buf.String())
+			clen = 0
+			buf.Reset()
+		}
+
+		buf.WriteString(cstr)
+	}
+
+	if len(buf.String()) > 0 {
+		childs = append(childs, buf.String())
+		buf.Reset()
+	}
+
+	return childs
 }
