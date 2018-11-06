@@ -414,8 +414,8 @@ func RenderNode(n *html.Node) string {
 	return buf.String()
 }
 
-func SplitHtml(h string) []string {
-	doc, _ := html.Parse(strings.NewReader(h))
+func SplitHtml(htmStr string, maxLen int) []string {
+	doc, _ := html.Parse(strings.NewReader(htmStr))
 	body := doc.FirstChild.FirstChild.NextSibling
 	childs := make([]string, 0)
 	buf := bytes.Buffer{}
@@ -423,7 +423,7 @@ func SplitHtml(h string) []string {
 	for c := body.FirstChild; c != nil; c = c.NextSibling {
 		cstr := RenderNode(c)
 		clen += len(cstr)
-		if clen > 4000 {
+		if clen > maxLen {
 			childs = append(childs, buf.String())
 			clen = 0
 			buf.Reset()
