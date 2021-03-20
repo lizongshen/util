@@ -1,0 +1,35 @@
+# github.com/cihub/seelog v0.0.0-20170130134532-f561c5e57575
+## explicit
+github.com/cihub/seelog
+github.com/cihub/seelog/archive
+github.com/cihub/seelog/archive/gzip
+github.com/cihub/seelog/archive/tar
+github.com/cihub/seelog/archive/zip
+# github.com/elazarl/goproxy v0.0.0-20210110162100-a92cc753f88e
+## explicit
+# github.com/lizongshen/logger v0.0.0-20181019115324-1e587df0ba96
+## explicit
+github.com/lizongshen/logger
+# github.com/parnurzeal/gorequest v0.2.16
+## explicit
+github.com/parnurzeal/gorequest
+# github.com/pkg/errors v0.9.1
+## explicit
+github.com/pkg/errors
+# github.com/smartystreets/goconvey v1.6.4
+## explicit
+# golang.org/x/net v0.0.0-20210316092652-d523dce5a7f4
+## explicit
+golang.org/x/net/html
+golang.org/x/net/html/atom
+golang.org/x/net/publicsuffix
+# golang.org/x/text v0.3.5
+## explicit
+golang.org/x/text/encoding
+golang.org/x/text/encoding/internal
+golang.org/x/text/encoding/internal/identifier
+golang.org/x/text/encoding/simplifiedchinese
+golang.org/x/text/transform
+# moul.io/http2curl v1.0.0
+## explicit
+moul.io/http2curl
